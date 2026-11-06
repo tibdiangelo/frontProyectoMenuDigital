@@ -1,16 +1,58 @@
-# React + Vite
+# Squisita - Menú Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web hecha con React + Vite para mostrar el menú de una pizzería y
+gestionar el inicio de sesión y el registro de usuarios.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20 o superior
+- npm
 
-## React Compiler
+## Comandos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install      # instalar dependencias
+npm run dev      # servidor de desarrollo
+npm run build    # build de producción
+npm run preview  # previsualizar el build
+npm run lint     # revisar el código con ESLint
+```
 
-## Expanding the ESLint configuration
+## Estructura
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── assets/              Imágenes del proyecto
+├── components/
+│   ├── Display.jsx      Layout con la navegación
+│   └── display.css
+├── pages/
+│   ├── Home.jsx         Menú de pizzas y sodas
+│   ├── Login.jsx        Formulario de inicio de sesión
+│   ├── Registro.jsx     Formulario de registro
+│   ├── ErrorPage.jsx    Página 404
+│   └── *.css            Estilos aislados por página
+├── router/
+│   └── enrutador.jsx    Definición de rutas
+├── index.css            Estilos globales
+└── main.jsx             Punto de entrada
+```
+
+## Rutas
+
+| Ruta        | Página                    |
+| ----------- | ------------------------- |
+| `/`         | Menú (Home)               |
+| `/login`    | Inicio de sesión          |
+| `/registro` | Registro de usuario       |
+| `*`         | Página no encontrada      |
+
+## Alias
+
+El alias `@` apunta a `src/`, por lo que se puede importar así:
+
+```js
+import Home from '@/pages/Home'
+```
+
+Está configurado en `vite.config.js` y `jsconfig.json`.

@@ -1,7 +1,8 @@
 {
-  "name": "react-demo",
+  "name": "menu-digital",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Menú digital de la pizzería Squisita",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +15,6 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router": "^8.4.0",
-    "react-router-dom": "^7.18.4",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

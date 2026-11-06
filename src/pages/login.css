@@ -1,0 +1,79 @@
+.login-page {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 3rem 1rem;
+  background-image: url('../assets/pizzaimg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: min(420px, 100%);
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.login-form .logo-redondo {
+  align-self: center;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border: 2px solid rgb(217, 70, 12);
+  border-radius: 50%;
+}
+
+.login-form .borde-iniciar {
+  display: inline-block;
+  align-self: center;
+  padding: 5px 15px;
+  border: 2px solid rgb(217, 70, 12);
+  border-radius: 8px;
+}
+
+.login-form .borde-iniciar span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px white;
+}
+
+.login-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.login-form input {
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgb(217, 70, 12);
+  border-radius: 5px;
+}
+
+.login-form input:focus {
+  outline: 2px solid rgba(217, 70, 12, 0.35);
+  outline-offset: 1px;
+}
+
+.login-form button {
+  margin-top: 0.5rem;
+  padding: 0.65rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background: rgb(217, 70, 12);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background: rgb(184, 58, 10);
+}
