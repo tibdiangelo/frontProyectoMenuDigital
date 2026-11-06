@@ -27,7 +27,7 @@ src/
 │   ├── Display.jsx      Layout con la navegación
 │   └── display.css
 ├── pages/
-│   ├── Home.jsx         Menú de pizzas y sodas
+│   ├── Inicio.jsx       Menú de pizzas y sodas
 │   ├── Login.jsx        Formulario de inicio de sesión
 │   ├── Registro.jsx     Formulario de registro
 │   ├── ErrorPage.jsx    Página 404

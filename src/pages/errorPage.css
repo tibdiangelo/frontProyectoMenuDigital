@@ -1,4 +1,4 @@
-.error-page {
+.pagina-error {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -10,18 +10,18 @@
   text-align: center;
 }
 
-.error-page h1 {
+.pagina-error h1 {
   margin: 0;
   font-size: 4rem;
   color: rgb(217, 70, 12);
 }
 
-.error-page .error-detail {
+.pagina-error .detalle-error {
   font-size: 0.9rem;
   color: #6b7280;
 }
 
-.error-page a {
+.pagina-error a {
   font-weight: bold;
   color: rgb(217, 70, 12);
 }

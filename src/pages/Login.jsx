@@ -7,14 +7,14 @@ export default function Login() {
   }
 
   return (
-    <div className="auth-page">
-      <section className="auth-card">
-        <header className="auth-header">
-          <img src={logoImg} alt="Logo Menú Digital" className="auth-logo" />
-          <h1 className="auth-title">Iniciar sesión</h1>
+    <div className="pagina-autenticacion">
+      <section className="tarjeta-autenticacion">
+        <header className="cabecera-autenticacion">
+          <img src={logoImg} alt="Logo Menú Digital" className="logo-autenticacion" />
+          <h1 className="titulo-autenticacion">Iniciar sesión</h1>
         </header>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <form className="formulario-autenticacion" onSubmit={handleSubmit}>
           <label htmlFor="username">Usuario</label>
           <input
             type="text"
@@ -35,12 +35,12 @@ export default function Login() {
             required
           />
 
-          <button type="submit" className="auth-submit">
+          <button type="submit" className="boton-autenticacion">
             Entrar
           </button>
         </form>
 
-        <p className="auth-footer">Desarrollado por Grupo Menú Digital</p>
+        <p className="pie-autenticacion">Desarrollado por Grupo Menú Digital</p>
       </section>
     </div>
   )

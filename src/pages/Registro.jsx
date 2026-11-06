@@ -1,4 +1,4 @@
-import pizzaImg from '../assets/pizza.png'
+import pizzaImg from '../assets/pizzaloggo.jpeg'
 import './auth.css'
 
 export default function Registro() {
@@ -7,14 +7,14 @@ export default function Registro() {
   }
 
   return (
-    <div className="auth-page">
-      <section className="auth-card">
-        <header className="auth-header">
-          <img src={pizzaImg} alt="Logo pizza" className="auth-logo" />
-          <h1 className="auth-title">Registrar Usuario</h1>
+    <div className="pagina-autenticacion">
+      <section className="tarjeta-autenticacion">
+        <header className="cabecera-autenticacion">
+          <img src={pizzaImg} alt="Logo pizza" className="logo-autenticacion" />
+          <h1 className="titulo-autenticacion">Registrar Usuario</h1>
         </header>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <form className="formulario-autenticacion" onSubmit={handleSubmit}>
           <label htmlFor="usuario">Usuario</label>
           <input
             type="text"
@@ -45,12 +45,12 @@ export default function Registro() {
             required
           />
 
-          <button type="submit" className="auth-submit">
+          <button type="submit" className="boton-autenticacion">
             Registrar
           </button>
         </form>
 
-        <p className="auth-footer">Desarrollado por Grupo Menú Digital</p>
+        <p className="pie-autenticacion">Desarrollado por Grupo Menú Digital</p>
       </section>
     </div>
   )

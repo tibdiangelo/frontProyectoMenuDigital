@@ -1,15 +1,23 @@
 import { NavLink, Outlet } from 'react-router'
 import './display.css'
 
+const claseEnlace = ({ isActive }) => (isActive ? 'activo' : undefined)
+
 export default function Display() {
   return (
-    <div className="app-layout">
-      <nav className="app-nav">
-        <NavLink to="/">Inicio</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/registro">Registro</NavLink>
+    <div className="disposicion-app">
+      <nav className="barra-navegacion">
+        <NavLink to="/" end className={claseEnlace}>
+          Inicio
+        </NavLink>
+        <NavLink to="/login" className={claseEnlace}>
+          Login
+        </NavLink>
+        <NavLink to="/registro" className={claseEnlace}>
+          Registro
+        </NavLink>
       </nav>
-      <main className="app-main">
+      <main className="contenido-principal">
         <Outlet />
       </main>
     </div>

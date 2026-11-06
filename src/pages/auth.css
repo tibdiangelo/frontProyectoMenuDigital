@@ -1,4 +1,4 @@
-.auth-page {
+.pagina-autenticacion {
   display: flex;
   flex: 1;
   align-items: center;
@@ -11,7 +11,7 @@
   background-size: cover;
 }
 
-.auth-card {
+.tarjeta-autenticacion {
   display: flex;
   flex-direction: column;
   width: min(480px, 100%);
@@ -21,7 +21,7 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
-.auth-header {
+.cabecera-autenticacion {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
   margin-bottom: 1.25rem;
 }
 
-.auth-logo {
+.logo-autenticacion {
   width: 84px;
   height: 84px;
   object-fit: cover;
@@ -38,26 +38,26 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.auth-title {
+.titulo-autenticacion {
   margin: 0;
   font-size: 1.6rem;
   color: #1a1a1a;
   text-align: center;
 }
 
-.auth-form {
+.formulario-autenticacion {
   display: flex;
   flex-direction: column;
 }
 
-.auth-form label {
+.formulario-autenticacion label {
   margin-bottom: 6px;
   font-size: 0.95rem;
   font-weight: 600;
   color: #1a1a1a;
 }
 
-.auth-form input {
+.formulario-autenticacion input {
   width: 100%;
   margin-bottom: 14px;
   padding: 0.65rem 0.8rem;
@@ -69,13 +69,13 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.auth-form input:focus {
+.formulario-autenticacion input:focus {
   border-color: rgb(217, 70, 12);
   outline: none;
   box-shadow: 0 0 0 3px rgba(217, 70, 12, 0.15);
 }
 
-.auth-submit {
+.boton-autenticacion {
   margin-top: 6px;
   padding: 0.75rem;
   font-size: 1.05rem;
@@ -88,11 +88,11 @@
   transition: background 0.2s;
 }
 
-.auth-submit:hover {
+.boton-autenticacion:hover {
   background: rgb(184, 58, 10);
 }
 
-.auth-footer {
+.pie-autenticacion {
   margin: 1.25rem 0 0;
   font-size: 0.8rem;
   color: #6b7280;
@@ -100,20 +100,20 @@
 }
 
 @media (max-width: 480px) {
-  .auth-page {
+  .pagina-autenticacion {
     padding: 1.5rem 1rem;
   }
 
-  .auth-card {
+  .tarjeta-autenticacion {
     padding: 1.5rem 1.25rem;
   }
 
-  .auth-logo {
+  .logo-autenticacion {
     width: 70px;
     height: 70px;
   }
 
-  .auth-title {
+  .titulo-autenticacion {
     font-size: 1.35rem;
   }
 }

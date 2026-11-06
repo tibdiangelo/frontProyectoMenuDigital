@@ -1,10 +1,10 @@
-.app-layout {
+.disposicion-app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.app-nav {
+.barra-navegacion {
   position: sticky;
   top: 0;
   z-index: 20;
@@ -15,25 +15,25 @@
   background-color: rgba(15, 15, 15, 0.92);
 }
 
-.app-nav a {
+.barra-navegacion a {
   font-weight: 600;
   color: #f5f5f5;
   text-decoration: none;
 }
 
-.app-nav a:hover,
-.app-nav a.active {
+.barra-navegacion a:hover,
+.barra-navegacion a.activo {
   color: #f97316;
 }
 
-.app-main {
+.contenido-principal {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
 @media (max-width: 600px) {
-  .app-nav {
+  .barra-navegacion {
     justify-content: center;
   }
 }
