@@ -1,5 +1,5 @@
 import pizzaImg from '../assets/pizza.png'
-import './registro.css'
+import './auth.css'
 
 export default function Registro() {
   function handleSubmit(event) {
@@ -7,19 +7,14 @@ export default function Registro() {
   }
 
   return (
-    <div className="registro-page">
-      <header>
-        <div className="logopizza">
-          <h1>
-            <img src={pizzaImg} alt="Logo pizza" />
-          </h1>
-        </div>
-      </header>
+    <div className="auth-page">
+      <section className="auth-card">
+        <header className="auth-header">
+          <img src={pizzaImg} alt="Logo pizza" className="auth-logo" />
+          <h1 className="auth-title">Registrar Usuario</h1>
+        </header>
 
-      <main>
-        <form id="formRegistro" onSubmit={handleSubmit}>
-          <h1>Registrar Usuario Squisita</h1>
-
+        <form className="auth-form" onSubmit={handleSubmit}>
           <label htmlFor="usuario">Usuario</label>
           <input
             type="text"
@@ -50,13 +45,13 @@ export default function Registro() {
             required
           />
 
-          <button type="submit">Registrar</button>
+          <button type="submit" className="auth-submit">
+            Registrar
+          </button>
         </form>
-      </main>
 
-      <footer>
-        <p className="desarrollado">Desarrollado por Grupo Menú Digital</p>
-      </footer>
+        <p className="auth-footer">Desarrollado por Grupo Menú Digital</p>
+      </section>
     </div>
   )
 }

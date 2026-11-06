@@ -1,5 +1,5 @@
 import logoImg from '../assets/pizzaloggo.jpeg'
-import './login.css'
+import './auth.css'
 
 export default function Login() {
   function handleSubmit(event) {
@@ -7,38 +7,41 @@ export default function Login() {
   }
 
   return (
-    <div className="login-page">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <img src={logoImg} alt="Logo Menú Digital" className="logo-redondo" />
+    <div className="auth-page">
+      <section className="auth-card">
+        <header className="auth-header">
+          <img src={logoImg} alt="Logo Menú Digital" className="auth-logo" />
+          <h1 className="auth-title">Iniciar sesión</h1>
+        </header>
 
-        <div className="borde-iniciar">
-          <span>
-            <em>Iniciar sesión</em>
-          </span>
-        </div>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <label htmlFor="username">Usuario</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Ingresa tu usuario"
+            autoComplete="username"
+            required
+          />
 
-        <label htmlFor="username">Usuario</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Ingresa tu usuario"
-          autoComplete="username"
-          required
-        />
+          <label htmlFor="password">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Ingresa tu contraseña"
+            autoComplete="current-password"
+            required
+          />
 
-        <label htmlFor="password">Contraseña</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Ingresa tu contraseña"
-          autoComplete="current-password"
-          required
-        />
+          <button type="submit" className="auth-submit">
+            Entrar
+          </button>
+        </form>
 
-        <button type="submit">Entrar</button>
-      </form>
+        <p className="auth-footer">Desarrollado por Grupo Menú Digital</p>
+      </section>
     </div>
   )
 }
