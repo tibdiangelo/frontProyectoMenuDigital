@@ -1,5 +1,7 @@
+import { Link } from 'react-router'
 import pizzaImg from '../assets/pizzaloggo.jpeg'
 import './auth.css'
+
 
 export default function Registro() {
   function handleSubmit(event) {
@@ -48,7 +50,13 @@ export default function Registro() {
           <button type="submit" className="boton-autenticacion">
             Registrar
           </button>
+
+          <Link to="/login" className="boton-secundario-autenticacion">
+            ¿Ya tienes cuenta? Iniciar sesión
+          </Link>
         </form>
+        
+        
 
         <p className="pie-autenticacion">Desarrollado por Grupo Menú Digital</p>
       </section>
