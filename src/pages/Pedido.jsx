@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
 import carritoImg from '../assets/carrito.jpeg'
 import { useCarrito } from '../context/CarritoContext'
+import { enviarPedido } from '../services/pedidosService'
 import formatoMoneda from '../utils/formatoMoneda'
 import './Pedido.css'
 
@@ -46,12 +48,36 @@ export default function Pedido() {
   } = useCarrito()
 
   const estaVacio = items.length === 0
+  const [enviando, setEnviando] = useState(false)
+  const [pedidoEnviado, setPedidoEnviado] = useState(null)
+  const [errorEnvio, setErrorEnvio] = useState('')
 
   function handleVaciar() {
     const confirmado = window.confirm('¿Seguro que quieres vaciar tu pedido?')
 
     if (confirmado) {
       vaciarCarrito()
+    }
+  }
+
+  async function handleEnviarPedido() {
+    if (estaVacio || enviando) return
+
+    const confirmado = window.confirm('¿Enviar tu pedido a la cocina?')
+
+    if (!confirmado) return
+
+    setEnviando(true)
+    setErrorEnvio('')
+
+    try {
+      const pedido = await enviarPedido({ items, total })
+      setPedidoEnviado(pedido)
+      vaciarCarrito()
+    } catch {
+      setErrorEnvio('No se pudo enviar el pedido. Inténtalo de nuevo.')
+    } finally {
+      setEnviando(false)
     }
   }
 
@@ -64,13 +90,29 @@ export default function Pedido() {
           </Link>
           <h1 className="titulo-pedido">Tu pedido</h1>
           <p className="subtitulo-pedido" aria-live="polite">
-            {estaVacio
-              ? 'Aún no has agregado platos.'
-              : `${cantidadTotal} ${cantidadTotal === 1 ? 'producto' : 'productos'} en tu pedido`}
+            {pedidoEnviado
+              ? 'Pedido enviado a la cocina'
+              : estaVacio
+                ? 'Aún no has agregado platos.'
+                : `${cantidadTotal} ${cantidadTotal === 1 ? 'producto' : 'productos'} en tu pedido`}
           </p>
         </header>
 
-        {estaVacio ? (
+        {pedidoEnviado ? (
+          <section className="pedido-enviado" aria-live="polite">
+            <span className="icono-enviado" aria-hidden="true">
+              ✓
+            </span>
+            <h2>¡Pedido enviado a la cocina!</h2>
+            <p>
+              Tu pedido <strong>#{pedidoEnviado.id.slice(-6).toUpperCase()}</strong>{' '}
+              fue recibido y está en estado <strong>{pedidoEnviado.estado}</strong>.
+            </p>
+            <Link to="/" className="boton-primario">
+              Volver al menú
+            </Link>
+          </section>
+        ) : estaVacio ? (
           <section className="pedido-vacio">
             <img src={carritoImg} alt="" className="icono-vacio" />
             <h2>Tu pedido está vacío</h2>
@@ -118,6 +160,21 @@ export default function Pedido() {
                 <span>Total</span>
                 <strong>{formatoMoneda.format(total)}</strong>
               </div>
+
+              <button
+                type="button"
+                className="boton-enviar"
+                onClick={handleEnviarPedido}
+                disabled={enviando}
+              >
+                {enviando ? 'Enviando pedido…' : 'Enviar pedido a la cocina'}
+              </button>
+
+              {errorEnvio ? (
+                <p className="error-envio" role="alert">
+                  {errorEnvio}
+                </p>
+              ) : null}
 
               <div className="acciones-resumen">
                 <Link to="/" className="boton-secundario">
