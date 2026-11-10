@@ -13,7 +13,7 @@ export default function Registro() {
       <section className="tarjeta-autenticacion">
         <header className="cabecera-autenticacion">
           <img src={pizzaImg} alt="Logo pizza" className="logo-autenticacion" />
-          <h1 className="titulo-autenticacion">Registrar Usuario</h1>
+          <h1 className="titulo-autenticacion">Registrar Usuario Administrador</h1>
         </header>
 
         <form className="formulario-autenticacion" onSubmit={handleSubmit}>

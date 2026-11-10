@@ -8,16 +8,16 @@ import formatoMoneda from '../utils/formatoMoneda'
 import './Inicio.css'
 
 const pizzas = [
-  { id: 'pizza-hawaiana', nombre: 'Hawaiana', precio: 28900, categoria: 'Pizzas' },
-  { id: 'pizza-peperoni', nombre: 'Peperoni', precio: 29900, categoria: 'Pizzas' },
-  { id: 'pizza-jamon-queso', nombre: 'Jamón y queso', precio: 27900, categoria: 'Pizzas' },
-  { id: 'pizza-napolitana', nombre: 'Napolitana', precio: 28900, categoria: 'Pizzas' },
+  { id: '1', nombre: 'Hawaiana', precio: 35000, categoria: 'Pizzas' },
+  { id: '2', nombre: 'Peperoni', precio: 35000, categoria: 'Pizzas' },
+  { id: '3', nombre: 'Jamón y queso', precio: 35000, categoria: 'Pizzas' },
+  { id: '4', nombre: 'Napolitana', precio: 35000, categoria: 'Pizzas' },
 ]
 
 const sodas = [
-  { id: 'soda-frutos-rojos', nombre: 'Frutos rojos', precio: 7900, categoria: 'Sodas' },
-  { id: 'soda-maracuya', nombre: 'Maracuyá', precio: 7900, categoria: 'Sodas' },
-  { id: 'soda-mango-biche', nombre: 'Mango biche', precio: 7900, categoria: 'Sodas' },
+  { id: '6', nombre: 'Soda de Frutos Rojos', precio: 9000, categoria: 'Sodas' },
+  { id: '5', nombre: 'Soda de Maracuyá', precio: 9000, categoria: 'Sodas' },
+  { id: '7', nombre: 'Soda de Mango', precio: 9000, categoria: 'Sodas' },
 ]
 
 export default function Inicio() {
@@ -120,6 +120,8 @@ export default function Inicio() {
             </span>
           ) : null}
         </button>
+
+        
 
         <footer className="pie-inicio">
           <p>Redes Sociales</p>

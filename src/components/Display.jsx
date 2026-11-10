@@ -11,10 +11,7 @@ export default function Display() {
           Inicio
         </NavLink>
         <NavLink to="/login" className={claseEnlace}>
-          Login
-        </NavLink>
-        <NavLink to="/registro" className={claseEnlace}>
-          Registro
+          Admin
         </NavLink>
       </nav>
       <main className="contenido-principal">

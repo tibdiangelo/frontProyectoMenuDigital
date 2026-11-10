@@ -161,14 +161,7 @@ export default function Pedido() {
                 <strong>{formatoMoneda.format(total)}</strong>
               </div>
 
-              <button
-                type="button"
-                className="boton-enviar"
-                onClick={handleEnviarPedido}
-                disabled={enviando}
-              >
-                {enviando ? 'Enviando pedido…' : 'Enviar pedido a la cocina'}
-              </button>
+              
 
               {errorEnvio ? (
                 <p className="error-envio" role="alert">
@@ -184,6 +177,14 @@ export default function Pedido() {
                   Vaciar pedido
                 </button>
               </div>
+              <button
+                type="button"
+                className="boton-enviar"
+                onClick={handleEnviarPedido}
+                disabled={enviando}
+              >
+                {enviando ? 'Enviando pedido…' : 'Enviar pedido a la cocina'}
+              </button>
             </section>
           </>
         )}
