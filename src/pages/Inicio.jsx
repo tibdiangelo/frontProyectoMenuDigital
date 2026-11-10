@@ -1,13 +1,29 @@
+import { useNavigate } from 'react-router'
 import logoImg from '../assets/pizzaloggo.jpeg'
 import pizzaImg from '../assets/pizzaimg.jpg'
 import sodasImg from '../assets/sodas.webp'
 import carritoImg from '../assets/carrito.jpeg'
+import { useCarrito } from '../context/CarritoContext'
+import formatoMoneda from '../utils/formatoMoneda'
 import './Inicio.css'
 
-const pizzas = ['Hawaiana', 'Peperoni', 'Jamón y queso', 'Napolitana']
-const sodas = ['Frutos rojos', 'Maracuyá', 'Mango biche']
+const pizzas = [
+  { id: 'pizza-hawaiana', nombre: 'Hawaiana', precio: 28900, categoria: 'Pizzas' },
+  { id: 'pizza-peperoni', nombre: 'Peperoni', precio: 29900, categoria: 'Pizzas' },
+  { id: 'pizza-jamon-queso', nombre: 'Jamón y queso', precio: 27900, categoria: 'Pizzas' },
+  { id: 'pizza-napolitana', nombre: 'Napolitana', precio: 28900, categoria: 'Pizzas' },
+]
+
+const sodas = [
+  { id: 'soda-frutos-rojos', nombre: 'Frutos rojos', precio: 7900, categoria: 'Sodas' },
+  { id: 'soda-maracuya', nombre: 'Maracuyá', precio: 7900, categoria: 'Sodas' },
+  { id: 'soda-mango-biche', nombre: 'Mango biche', precio: 7900, categoria: 'Sodas' },
+]
 
 export default function Inicio() {
+  const navigate = useNavigate()
+  const { agregarPlato, cantidadTotal } = useCarrito()
+
   return (
     <div className="pagina-inicio">
       <div className="contenedor-inicio">
@@ -31,10 +47,22 @@ export default function Inicio() {
               loading="lazy"
             />
             <ul className="lista-inicio">
-              {pizzas.map((pizza) => (
-                <li key={pizza} className="elemento-lista">
-                  <span>{pizza}</span>
-                  <span className="punto-lista" aria-hidden="true" />
+              {pizzas.map((plato) => (
+                <li key={plato.id} className="elemento-lista">
+                  <div className="datos-plato">
+                    <span className="nombre-plato">{plato.nombre}</span>
+                    <span className="precio-plato">
+                      {formatoMoneda.format(plato.precio)}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="boton-agregar"
+                    onClick={() => agregarPlato(plato)}
+                    aria-label={`Agregar ${plato.nombre} al pedido`}
+                  >
+                    + Agregar
+                  </button>
                 </li>
               ))}
             </ul>
@@ -52,19 +80,45 @@ export default function Inicio() {
               loading="lazy"
             />
             <ul className="lista-inicio">
-              {sodas.map((soda) => (
-                <li key={soda} className="elemento-lista">
-                  <span>{soda}</span>
-                  <span className="punto-lista" aria-hidden="true" />
+              {sodas.map((plato) => (
+                <li key={plato.id} className="elemento-lista">
+                  <div className="datos-plato">
+                    <span className="nombre-plato">{plato.nombre}</span>
+                    <span className="precio-plato">
+                      {formatoMoneda.format(plato.precio)}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="boton-agregar"
+                    onClick={() => agregarPlato(plato)}
+                    aria-label={`Agregar ${plato.nombre} al pedido`}
+                  >
+                    + Agregar
+                  </button>
                 </li>
               ))}
             </ul>
           </article>
         </section>
 
-        <button type="button" className="boton-carrito">
+        <button
+          type="button"
+          className="boton-carrito"
+          onClick={() => navigate('/pedido')}
+          aria-label={`Ver mi pedido${
+            cantidadTotal > 0
+              ? `, ${cantidadTotal} ${cantidadTotal === 1 ? 'producto' : 'productos'}`
+              : ''
+          }`}
+        >
           <img src={carritoImg} alt="" className="icono-carrito" />
           <span>Ver mi pedido</span>
+          {cantidadTotal > 0 ? (
+            <span className="contador-carrito" aria-hidden="true">
+              {cantidadTotal}
+            </span>
+          ) : null}
         </button>
 
         <footer className="pie-inicio">

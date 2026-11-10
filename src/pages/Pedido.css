@@ -1,0 +1,356 @@
+.pagina-pedido {
+  flex: 1;
+  min-height: 100%;
+  padding: 2rem 0 3rem;
+  background-image: linear-gradient(rgba(12, 8, 5, 0.7), rgba(12, 8, 5, 0.88)),
+    url('../assets/pizzaimg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.contenedor-pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Encabezado ---------- */
+
+.cabecera-pedido {
+  padding: 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.enlace-volver {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(217, 70, 12);
+  text-decoration: none;
+}
+
+.enlace-volver:hover {
+  text-decoration: underline;
+}
+
+.titulo-pedido {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.subtitulo-pedido {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* ---------- Lista de platos ---------- */
+
+.lista-pedido {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-pedido {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.info-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.nombre-item {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #1a1a1a;
+}
+
+.precio-unitario {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.acciones-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'cantidad subtotal'
+    'eliminar eliminar';
+  align-items: center;
+  gap: 0.35rem 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.control-cantidad {
+  grid-area: cantidad;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  background: #fff7f0;
+  border: 1px solid #f1e7e0;
+  border-radius: 999px;
+}
+
+.boton-cantidad {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgb(217, 70, 12);
+  background: #fff;
+  border: 1px solid rgba(217, 70, 12, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boton-cantidad:hover:not(:disabled) {
+  color: #fff;
+  background: rgb(217, 70, 12);
+}
+
+.boton-cantidad:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cantidad-item {
+  min-width: 1.9rem;
+  text-align: center;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.subtotal-item {
+  grid-area: subtotal;
+  align-self: center;
+  margin: 0;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.boton-eliminar {
+  grid-area: eliminar;
+  justify-self: end;
+  min-height: 2.25rem;
+  padding: 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #b91c1c;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.boton-eliminar:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Resumen ---------- */
+
+.resumen-pedido {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.fila-resumen {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.fila-total {
+  padding-top: 0.75rem;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  border-top: 1px solid #f1e7e0;
+}
+
+.fila-total strong {
+  font-size: 1.45rem;
+  color: rgb(217, 70, 12);
+}
+
+.acciones-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.boton-primario,
+.boton-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-primario {
+  color: #fff;
+  background: rgb(217, 70, 12);
+  border: 1px solid rgb(217, 70, 12);
+}
+
+.boton-primario:hover {
+  background: rgb(184, 58, 10);
+}
+
+.boton-secundario {
+  color: rgb(217, 70, 12);
+  background: #fff;
+  border: 1px solid rgba(217, 70, 12, 0.4);
+}
+
+.boton-secundario:hover {
+  background: rgba(217, 70, 12, 0.08);
+}
+
+.boton-vaciar {
+  min-height: 2.5rem;
+  padding: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b91c1c;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.boton-vaciar:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Estado vacío ---------- */
+
+.pedido-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.icono-vacio {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border: 3px solid rgba(217, 70, 12, 0.25);
+  border-radius: 50%;
+}
+
+.pedido-vacio h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #1a1a1a;
+}
+
+.pedido-vacio p {
+  max-width: 32ch;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.pedido-vacio .boton-primario {
+  margin-top: 0.5rem;
+}
+
+/* ---------- Accesibilidad ---------- */
+
+.boton-primario:focus-visible,
+.boton-secundario:focus-visible,
+.boton-cantidad:focus-visible,
+.boton-eliminar:focus-visible,
+.boton-vaciar:focus-visible,
+.enlace-volver:focus-visible {
+  outline: 3px solid rgba(217, 70, 12, 0.45);
+  outline-offset: 2px;
+}
+
+/* ---------- Escritorio ---------- */
+
+@media (min-width: 720px) {
+  .pagina-pedido {
+    padding-top: 3rem;
+  }
+
+  .contenedor-pedido {
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .cabecera-pedido {
+    padding: 2rem;
+  }
+
+  .acciones-item {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'cantidad subtotal eliminar';
+    gap: 0.65rem;
+  }
+
+  .acciones-resumen {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .acciones-resumen .boton-vaciar {
+    order: -1;
+    margin-right: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boton-cantidad,
+  .boton-primario,
+  .boton-secundario {
+    transition: none;
+  }
+}

@@ -136,13 +136,44 @@
   background-color: rgba(217, 70, 12, 0.06);
 }
 
-.punto-lista {
+.datos-plato {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.nombre-plato {
+  font-size: 0.98rem;
+}
+
+.precio-plato {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.boton-agregar {
   flex-shrink: 0;
-  width: 8px;
-  height: 8px;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgb(217, 70, 12);
+  background: rgba(217, 70, 12, 0.1);
+  border: 1px solid rgba(217, 70, 12, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boton-agregar:hover {
+  color: #fff;
   background: rgb(217, 70, 12);
-  border-radius: 50%;
-  opacity: 0.55;
+}
+
+.boton-agregar:focus-visible {
+  outline: 2px solid rgb(217, 70, 12);
+  outline-offset: 2px;
 }
 
 
@@ -184,6 +215,19 @@
   object-fit: cover;
   border: 2px solid #fff;
   border-radius: 50%;
+}
+
+.contador-carrito {
+  display: grid;
+  place-items: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: rgb(217, 70, 12);
+  background: #fff;
+  border-radius: 999px;
 }
 
 
@@ -231,6 +275,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .boton-carrito,
+  .boton-agregar,
   .elemento-lista {
     transition: none;
   }
