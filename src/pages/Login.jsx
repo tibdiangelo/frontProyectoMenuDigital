@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import logoImg from '../assets/pizzaloggo.jpeg'
 import './auth.css'
 
@@ -11,7 +12,7 @@ export default function Login() {
       <section className="tarjeta-autenticacion">
         <header className="cabecera-autenticacion">
           <img src={logoImg} alt="Logo Menú Digital" className="logo-autenticacion" />
-          <h1 className="titulo-autenticacion">Iniciar sesión</h1>
+          <h1 className="titulo-autenticacion">Iniciar sesión Admin</h1>
         </header>
 
         <form className="formulario-autenticacion" onSubmit={handleSubmit}>
@@ -38,7 +39,13 @@ export default function Login() {
           <button type="submit" className="boton-autenticacion">
             Entrar
           </button>
+
+          <Link to="/registro" className="boton-secundario-autenticacion">
+            ¿No tienes cuenta? Registrarme
+          </Link>
         </form>
+
+        
 
         <p className="pie-autenticacion">Desarrollado por Grupo Menú Digital</p>
       </section>
