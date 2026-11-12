@@ -8,7 +8,7 @@ export default function Display() {
     <div className="disposicion-app">
       <nav className="barra-navegacion">
         <NavLink to="/" end className={claseEnlace}>
-          Inicio
+          Menú
         </NavLink>
         <NavLink to="/login" className={claseEnlace}>
           Admin
