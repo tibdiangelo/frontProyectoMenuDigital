@@ -1,0 +1,208 @@
+
+
+header {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    padding: 40px;
+    width: 100%;
+}
+
+.logopizza { 
+   text-align: center;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.logopizza img
+     {
+    width: 120px;          /* Lo subimos de 90px a 120px para que quede más grande */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgb(217, 70, 12);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: block;
+    margin: 0 auto;
+    
+    /* Esto lo empuja hacia arriba para que salga del recuadro transparente */
+    position: relative;
+    top: -5px; 
+    left: 0px;
+}
+
+    
+ 
+main {
+    
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.form-title h2 {
+  margin: 0;
+  color: #1a1818;
+  font-size: 1.5rem;
+  display: inline-block; /* Hace que el área de hover se ajuste exacto al texto */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* La sombra anaranjada se aplica SOLAMENTE a las letras al pasar el mouse */
+.form-title h2:hover {
+    
+  text-shadow: 2px 2px 10px rgb(244, 81, 11);
+            
+}
+
+form {
+    
+    background:  rgba(227, 223, 222, 0.873);
+    padding: 4%;
+    border-radius: 10px;
+    
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    
+}
+#formLogin {
+    margin-top: -30px;
+}
+form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    
+    
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+     width: 100% !important;
+  text-align: center !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  font-weight: bold;
+      font-size: 1.5rem;
+      border-radius:5px;
+      border: 2px solid rgb(217,70,12);
+      -webkit-text-stroke: 1px white;
+     
+}
+
+
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #0f0f0f;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: rgb(67, 68, 70);
+}
+
+button[type="submit"] {
+    background-color: rgb(172, 86, 37);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+
+}
+
+button[type="submit"]:hover {
+    background-color:rgb(217, 70, 12);
+}
+
+footer {
+    
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+}
+
+footer h2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+footer div img {
+    width: 30px;
+    height: 30px;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+footer div img:hover {
+    transform: scale(1.1);
+}
+
+.desarrollado {
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: rgb(226, 219, 209);
+}
+
+.mafe {
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: rgb(138, 138, 138);
+}
+
+.registro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: -20px;
+}

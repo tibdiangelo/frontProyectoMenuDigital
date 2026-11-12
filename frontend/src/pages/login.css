@@ -1,0 +1,61 @@
+/* Contenedor principal que centra todo en la pantalla */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    min-height: 100vh;
+    gap: 5px;
+}
+
+/* El logo redondo centrado arriba */
+.logo-redondo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgb(217, 78, 12);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    right:50px;
+}
+.logopizza {
+    margin: left 20px !important;
+}
+
+.titulo-iniciar {
+    border: 1px solid rgb(217, 78, 12);
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    
+     width: 100% !important;
+  text-align: center !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  font-weight: bold;
+      font-size: 1.8rem;
+      border-radius:5px;
+      border: 2px solid rgb(217,70,12);
+      -webkit-text-stroke: 1px white;
+      
+}
+
+.titulo-iniciar :hover{
+       
+          text-shadow: 2px 2px 10px rgb(244, 81, 11);
+
+}
+ 
+
+
+form{
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 1px;
+    width: 450px;
+}

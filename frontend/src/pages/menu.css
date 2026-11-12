@@ -1,0 +1,198 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-redondo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgb(217, 70, 12);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}
+ 
+header {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-right: auto; 
+    margin-left: 320px;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(13, 10, 10);
+    border: 2px solid rgb(217, 70, 12);
+    border-radius: 8px;
+    -webkit-text-stroke: 2px white;
+    background: rgba(246, 245, 244, 0.735);
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;}
+
+    .targeta-categoria {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    background: rgba(246, 245, 244, 0.735);
+    
+        }
+
+    .targeta-categoria h2{
+      font-weight: bold;
+      font-size: 3rem;
+      border-radius: 5px;
+      border: 2px solid rgb(217,70,12);
+      -webkit-text-stroke: 1px white;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      
+      -webkit-text-stroke: 1px white;
+
+
+
+      
+    }
+
+    .Menu-categorias{
+        display: flex;
+        justify-content: flex-start;
+        gap: 100px;
+        margin: 20px;
+        margin-top: -5px;
+    }
+
+
+.pizza-categoria{
+    width: 130%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px ;
+
+}
+
+.soda-categoria{
+    width: 130%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.targeta-categoria ul{ 
+list-style: none;
+}
+
+.targeta-categoria li{
+    color: black;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 3px;
+    border-left: 4px solid rgb(217,70, 12);
+    border-right: 4px solid rgb(217,70 ,12);
+     -webkit-text-stroke: 1px white;
+    }
+
+    .targeta-categoria li:hover {
+        background: rgba(216,56,12, 0.6);
+    }
+    header h1 :hover, .targeta-categoria h2 :hover {
+        background: rgba(216,56,12,0.6);
+    }
+
+    .carrito-icono{
+      display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+    position: fixed;
+    right: 20px;           /* Lo pega a la esquina derecha */
+    top: 50%;              /* Lo manda a la mitad vertical de la pantalla */
+    transform: translateY(-50%); /* Lo centra perfecto en su propio eje vertical */
+     -webkit-text-stroke: 1px white;
+    }
+
+    .carrito-icono img{
+        object-fit: cover;
+        border-radius: 30px;
+        border: 2px solid rgb(217, 70, 12);
+     }
+
+.logo-redes{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+ .logo-redes img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+            border: 2px solid rgb(217, 70, 12);
+
+   
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+
+ }
+ footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 180px;
+    padding-bottom: 20px;
+ }
+
+
+
+
+/* Centra y agranda un poco las categorías de pizzas y sodas */
+.Menu-categorias {
+  display: flex;
+  justify-content: center;
+  gap: 350px;
+  align-items: flex-start;
+  /* Esto agranda un poco todo el bloque sin alterar tu diseño */
+  margin-top: 100px;
+}
+
+.menu-container header h1 {
+  display: flex;
+  flex-direction: column;
+ 
+  
+ 
+ 
+  text-align: center;
+  width: 60%;
+}

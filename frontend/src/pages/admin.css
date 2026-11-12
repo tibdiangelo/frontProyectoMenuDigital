@@ -1,0 +1,101 @@
+
+.admin-container {
+    padding: 20px;
+    color: #fffdfda3;
+    display:flex;
+    flex-direction:column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    gap:100px;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.admin-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Esto divide tu pantalla en dos columnas iguales: una para el menú y otra para los pedidos */
+    gap: 20px;
+}
+
+.admin-seccion {
+    background-color:  #fffdfda3;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px rgb(217, 70, 12) solid;
+    margin-top: -150px;
+}
+.admin-seccion h2 {
+    margin-top: 0;
+    color: rgb(13, 10, 10);
+    font-size: 2rem;
+    border: 2px solid rgb(217, 70, 12);
+    border-radius: 8px;
+    -webkit-text-stroke: 1px white;
+    background: rgba(246, 245, 244, 0.735);
+    text-align:center;
+    font-weight: bold;
+    
+}
+.admin-seccion p {
+    list-style-type: none;
+    padding: 0;
+    color: rgb(13, 10, 10);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.admin-footer{
+    margin-top: 30px;
+    padding: 15px;
+   
+}
+.btn-salir   {
+    background-color: rgb(217, 70, 12);
+    color:  rgb(17, 6, 10);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+
+justify-content: left;
+font-weight: bold;
+font-size: 1.5rem;
+}
+
+.titulo-nuevo-usuario  {
+    color: rgb(13, 10, 10);
+    font-size: 1.5rem;
+    margin-right: 10px;
+    font-weight: bold;
+     border: 2px solid rgb(217, 70, 12);
+     -webkit-text-stroke: 1px white;
+
+}
+.admin-footer{
+    display: flex;
+    justify-content: space-between; /*alinea uno a la derecha, otro a la izquierda*/
+    align-items: flex-end; /* alinea ambos abojo */
+
+}
+ .form-admin{
+    background-color:  #fffdfda3; 
+    width: 15%;
+    padding: 20px;
+    
+
+
+ }
+
+ .form-button{
+    background-color: rgb(217, 70, 12);
+ }
