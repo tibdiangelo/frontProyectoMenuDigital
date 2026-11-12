@@ -91,9 +91,9 @@ export default function Pedido() {
       mesa.trim() === '' ||
       !Number.isInteger(numeroMesa) ||
       numeroMesa < 1 ||
-      numeroMesa > 50
+      numeroMesa > 10
     ) {
-      nuevosErrores.mesa = 'La mesa debe ser un número entero entre 1 y 50.'
+      nuevosErrores.mesa = 'La mesa debe ser un número entero entre 1 y 10.'
     }
 
     return nuevosErrores
@@ -242,7 +242,7 @@ export default function Pedido() {
                     name="cliente_nombre"
                     value={clienteNombre}
                     onChange={(event) => setClienteNombre(event.target.value)}
-                    placeholder="Ej. Ana Pérez"
+                    placeholder="Nombre"
                     autoComplete="name"
                     maxLength={60}
                     aria-invalid={errores.clienteNombre ? 'true' : undefined}
@@ -269,7 +269,7 @@ export default function Pedido() {
                     onChange={(event) => setMesa(event.target.value)}
                     placeholder="Ej. 5"
                     min="1"
-                    max="50"
+                    max="10"
                     step="1"
                     inputMode="numeric"
                     aria-invalid={errores.mesa ? 'true' : undefined}
