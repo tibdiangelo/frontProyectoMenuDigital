@@ -142,3 +142,19 @@
     font-size: 1.35rem;
   }
 }
+
+.mensaje-error {
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(217, 70, 12);
+  text-align: center;
+}
+
+.mensaje-success {
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(217, 70, 12);
+  text-align: center;
+}
