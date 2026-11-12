@@ -144,17 +144,17 @@
 }
 
 .mensaje-error {
-  margin: 1rem 0;
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgb(217, 70, 12);
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b91c1c;
   text-align: center;
 }
 
 .mensaje-success {
-  margin: 1rem 0;
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgb(217, 70, 12);
+margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1cb963;
   text-align: center;
 }
