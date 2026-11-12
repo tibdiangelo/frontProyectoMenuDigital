@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router'
 import carritoImg from '../assets/carrito.jpeg'
 import { useCarrito } from '../context/CarritoContext'
@@ -37,6 +37,14 @@ function CantidadItem({ item, alCambiarCantidad }) {
   )
 }
 
+function numeroPedido(id) {
+  if (id === null || id === undefined) return '—'
+
+  const texto = String(id)
+
+  return texto.length > 8 ? texto.slice(-6).toUpperCase() : texto
+}
+
 export default function Pedido() {
   const {
     items,
@@ -47,10 +55,20 @@ export default function Pedido() {
     vaciarCarrito,
   } = useCarrito()
 
-  const estaVacio = items.length === 0
+  const [paso, setPaso] = useState('carrito')
   const [enviando, setEnviando] = useState(false)
   const [pedidoEnviado, setPedidoEnviado] = useState(null)
   const [errorEnvio, setErrorEnvio] = useState('')
+  const [clienteNombre, setClienteNombre] = useState('')
+  const [mesa, setMesa] = useState('')
+  const [notas, setNotas] = useState('')
+  const [errores, setErrores] = useState({})
+
+  const nombreRef = useRef(null)
+  const mesaRef = useRef(null)
+
+  const estaVacio = items.length === 0
+  const enConfirmacion = paso === 'confirmar'
 
   function handleVaciar() {
     const confirmado = window.confirm('¿Seguro que quieres vaciar tu pedido?')
@@ -60,22 +78,67 @@ export default function Pedido() {
     }
   }
 
-  async function handleEnviarPedido() {
-    if (estaVacio || enviando) return
+  function validarFormulario() {
+    const nuevosErrores = {}
 
-    const confirmado = window.confirm('¿Enviar tu pedido a la cocina?')
+    if (clienteNombre.trim().length < 2) {
+      nuevosErrores.clienteNombre = 'Ingresa un nombre de al menos 2 caracteres.'
+    }
 
-    if (!confirmado) return
+    const numeroMesa = Number(mesa)
+
+    if (
+      mesa.trim() === '' ||
+      !Number.isInteger(numeroMesa) ||
+      numeroMesa < 1 ||
+      numeroMesa > 50
+    ) {
+      nuevosErrores.mesa = 'La mesa debe ser un número entero entre 1 y 50.'
+    }
+
+    return nuevosErrores
+  }
+
+  async function handleConfirmarPedido(event) {
+    event.preventDefault()
+
+    if (enviando) return
+
+    const nuevosErrores = validarFormulario()
+    setErrores(nuevosErrores)
+
+    if (Object.keys(nuevosErrores).length > 0) {
+      if (nuevosErrores.clienteNombre) {
+        nombreRef.current?.focus()
+      } else if (nuevosErrores.mesa) {
+        mesaRef.current?.focus()
+      }
+
+      return
+    }
+
+    const nombreLimpio = clienteNombre.trim()
+    const numeroMesa = Number(mesa)
 
     setEnviando(true)
     setErrorEnvio('')
 
     try {
-      const pedido = await enviarPedido({ items, total })
-      setPedidoEnviado(pedido)
+      const pedido = await enviarPedido({
+        mesa: numeroMesa,
+        clienteNombre: nombreLimpio,
+        notas: notas.trim(),
+        items,
+      })
+
+      setPedidoEnviado({ ...pedido, mesa: numeroMesa, clienteNombre: nombreLimpio })
       vaciarCarrito()
-    } catch {
-      setErrorEnvio('No se pudo enviar el pedido. Inténtalo de nuevo.')
+      setPaso('enviado')
+      setErrores({})
+    } catch (error) {
+      setErrorEnvio(
+        error.message || 'No se pudo enviar el pedido. Inténtalo de nuevo.',
+      )
     } finally {
       setEnviando(false)
     }
@@ -88,29 +151,36 @@ export default function Pedido() {
           <Link to="/" className="enlace-volver">
             ← Volver al menú
           </Link>
-          <h1 className="titulo-pedido">Tu pedido</h1>
+          <h1 className="titulo-pedido">
+            {enConfirmacion ? 'Confirmar pedido' : 'Tu pedido'}
+          </h1>
           <p className="subtitulo-pedido" aria-live="polite">
-            {pedidoEnviado
+            {paso === 'enviado'
               ? 'Pedido enviado a la cocina'
-              : estaVacio
-                ? 'Aún no has agregado platos.'
-                : `${cantidadTotal} ${cantidadTotal === 1 ? 'producto' : 'productos'} en tu pedido`}
+              : enConfirmacion
+                ? 'Ingresa tu nombre y el número de mesa.'
+                : estaVacio
+                  ? 'Aún no has agregado platos.'
+                  : `${cantidadTotal} ${cantidadTotal === 1 ? 'producto' : 'productos'} en tu pedido`}
           </p>
         </header>
 
-        {pedidoEnviado ? (
+        {paso === 'enviado' && pedidoEnviado ? (
           <section className="pedido-enviado" aria-live="polite">
             <span className="icono-enviado" aria-hidden="true">
               ✓
             </span>
             <h2>¡Pedido enviado a la cocina!</h2>
             <p>
-              Tu pedido <strong>#{pedidoEnviado.id.slice(-6).toUpperCase()}</strong>{' '}
-              fue recibido y está en estado <strong>{pedidoEnviado.estado}</strong>.
+              Pedido <strong>#{numeroPedido(pedidoEnviado.id)}</strong> · Estado{' '}
+              <strong>{pedidoEnviado.estado}</strong>
             </p>
-            <Link to="/" className="boton-primario">
-              Volver al menú
-            </Link>
+            <p className="detalle-entrega">
+              Mesa {pedidoEnviado.mesa} · {pedidoEnviado.clienteNombre}
+            </p>
+            <a href="/" className="boton-primario">
+              Hacer otro pedido
+            </a>
           </section>
         ) : estaVacio ? (
           <section className="pedido-vacio">
@@ -151,41 +221,145 @@ export default function Pedido() {
               ))}
             </ul>
 
-            <section className="resumen-pedido" aria-label="Resumen del pedido">
-              <div className="fila-resumen">
-                <span>Productos</span>
-                <span>{cantidadTotal}</span>
-              </div>
-              <div className="fila-resumen fila-total">
-                <span>Total</span>
-                <strong>{formatoMoneda.format(total)}</strong>
-              </div>
-
-              
-
-              {errorEnvio ? (
-                <p className="error-envio" role="alert">
-                  {errorEnvio}
-                </p>
-              ) : null}
-
-              <div className="acciones-resumen">
-                <Link to="/" className="boton-secundario">
-                  Seguir eligiendo
-                </Link>
-                <button type="button" className="boton-vaciar" onClick={handleVaciar}>
-                  Vaciar pedido
-                </button>
-              </div>
-              <button
-                type="button"
-                className="boton-enviar"
-                onClick={handleEnviarPedido}
-                disabled={enviando}
+            {enConfirmacion ? (
+              <form
+                className="formulario-confirmacion"
+                onSubmit={handleConfirmarPedido}
+                noValidate
               >
-                {enviando ? 'Enviando pedido…' : 'Enviar pedido a la cocina'}
-              </button>
-            </section>
+                <h2 className="titulo-confirmacion">Datos de entrega</h2>
+                <p className="texto-confirmacion">
+                  Completa los datos para que la cocina sepa a nombre de quién y a
+                  qué mesa llevar el pedido.
+                </p>
+
+                <div className="campo-formulario">
+                  <label htmlFor="cliente-nombre">Nombre del cliente</label>
+                  <input
+                    ref={nombreRef}
+                    type="text"
+                    id="cliente-nombre"
+                    name="cliente_nombre"
+                    value={clienteNombre}
+                    onChange={(event) => setClienteNombre(event.target.value)}
+                    placeholder="Ej. Ana Pérez"
+                    autoComplete="name"
+                    maxLength={60}
+                    aria-invalid={errores.clienteNombre ? 'true' : undefined}
+                    aria-describedby={
+                      errores.clienteNombre ? 'error-cliente-nombre' : undefined
+                    }
+                    required
+                  />
+                  {errores.clienteNombre ? (
+                    <p id="error-cliente-nombre" className="mensaje-error-campo">
+                      {errores.clienteNombre}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div className="campo-formulario">
+                  <label htmlFor="mesa">Número de mesa</label>
+                  <input
+                    ref={mesaRef}
+                    type="number"
+                    id="mesa"
+                    name="mesa"
+                    value={mesa}
+                    onChange={(event) => setMesa(event.target.value)}
+                    placeholder="Ej. 5"
+                    min="1"
+                    max="50"
+                    step="1"
+                    inputMode="numeric"
+                    aria-invalid={errores.mesa ? 'true' : undefined}
+                    aria-describedby={errores.mesa ? 'error-mesa' : undefined}
+                    required
+                  />
+                  {errores.mesa ? (
+                    <p id="error-mesa" className="mensaje-error-campo">
+                      {errores.mesa}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div className="campo-formulario">
+                  <label htmlFor="notas">Notas (opcional)</label>
+                  <textarea
+                    id="notas"
+                    name="notas"
+                    value={notas}
+                    onChange={(event) => setNotas(event.target.value)}
+                    rows="3"
+                    maxLength={300}
+                    placeholder="Ej. Sin cebolla, sin picante…"
+                  />
+                </div>
+
+                <div className="total-confirmacion">
+                  <span>Total</span>
+                  <strong>{formatoMoneda.format(total)}</strong>
+                </div>
+
+                {errorEnvio ? (
+                  <p className="error-envio" role="alert">
+                    {errorEnvio}
+                  </p>
+                ) : null}
+
+                <div className="acciones-confirmacion">
+                  <button
+                    type="button"
+                    className="boton-secundario"
+                    onClick={() => {
+                      setPaso('carrito')
+                      setErrorEnvio('')
+                    }}
+                    disabled={enviando}
+                  >
+                    Volver al pedido
+                  </button>
+                  <button type="submit" className="boton-enviar" disabled={enviando}>
+                    {enviando ? 'Enviando pedido…' : 'Confirmar pedido'}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <section className="resumen-pedido" aria-label="Resumen del pedido">
+                <div className="fila-resumen">
+                  <span>Productos</span>
+                  <span>{cantidadTotal}</span>
+                </div>
+                <div className="fila-resumen fila-total">
+                  <span>Total</span>
+                  <strong>{formatoMoneda.format(total)}</strong>
+                </div>
+
+                <div className="acciones-resumen">
+                  <Link to="/" className="boton-secundario">
+                    Seguir eligiendo
+                  </Link>
+                  <button
+                    type="button"
+                    className="boton-vaciar"
+                    onClick={handleVaciar}
+                  >
+                    Vaciar pedido
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  className="boton-enviar"
+                  onClick={() => {
+                    setPaso('confirmar')
+                    setErrorEnvio('')
+                  }}
+                >
+                  Enviar pedido a la cocina
+                </button>
+              </section>
+            )}
           </>
         )}
       </div>

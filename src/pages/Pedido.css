@@ -283,6 +283,107 @@
   text-align: center;
 }
 
+/* ---------- Confirmación del pedido ---------- */
+
+.formulario-confirmacion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-confirmacion {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1a1a1a;
+}
+
+.texto-confirmacion {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo-formulario label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  color: #1a1a1a;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-formulario textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+  border-color: rgb(217, 70, 12);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(217, 70, 12, 0.15);
+}
+
+.campo-formulario input[aria-invalid='true'],
+.campo-formulario textarea[aria-invalid='true'] {
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+
+.mensaje-error-campo {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.total-confirmacion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  font-size: 1rem;
+  color: #4b5563;
+  border-top: 1px solid #f1e7e0;
+}
+
+.total-confirmacion strong {
+  font-size: 1.35rem;
+  color: rgb(217, 70, 12);
+}
+
+.acciones-confirmacion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.acciones-confirmacion .boton-secundario,
+.acciones-confirmacion .boton-enviar {
+  width: 100%;
+}
+
 .boton-vaciar {
   min-height: 2.5rem;
   padding: 0.4rem;
@@ -376,6 +477,11 @@
   color: #6b7280;
 }
 
+.detalle-entrega {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
 .pedido-enviado .boton-primario {
   margin-top: 0.5rem;
 }
@@ -424,6 +530,17 @@
   .acciones-resumen .boton-vaciar {
     order: -1;
     margin-right: auto;
+  }
+
+  .acciones-confirmacion {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .acciones-confirmacion .boton-secundario,
+  .acciones-confirmacion .boton-enviar {
+    flex: 1;
+    width: auto;
   }
 }
 
