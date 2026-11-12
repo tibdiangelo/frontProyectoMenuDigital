@@ -29,8 +29,8 @@ export default function Inicio() {
       <div className="contenedor-inicio">
         <header className="portada-inicio">
           <img src={logoImg} alt="Logo Menú Digital" className="logo-inicio" />
-          <p className="antetitulo-inicio">Pizzería Squisita</p>
-          <h1 className="titulo-inicio">Menú Digital</h1>
+          <p className="antetitulo-inicio">Menú Digital</p>
+          <h1 className="titulo-inicio">Pizzería Squisita</h1>
           <p className="subtitulo-inicio">Elige tus favoritos y arma tu pedido.</p>
         </header>
 
@@ -120,8 +120,6 @@ export default function Inicio() {
             </span>
           ) : null}
         </button>
-
-        
 
         <footer className="pie-inicio">
           <p>Redes Sociales</p>
