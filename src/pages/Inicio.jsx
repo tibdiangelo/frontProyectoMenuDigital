@@ -15,8 +15,8 @@ const pizzas = [
 ]
 
 const sodas = [
-  { id: '6', nombre: 'Soda de Frutos Rojos', precio: 9000, categoria: 'Sodas' },
   { id: '5', nombre: 'Soda de Maracuyá', precio: 9000, categoria: 'Sodas' },
+  { id: '6', nombre: 'Soda de Frutos Rojos', precio: 9000, categoria: 'Sodas' },
   { id: '7', nombre: 'Soda de Mango', precio: 9000, categoria: 'Sodas' },
 ]
 
