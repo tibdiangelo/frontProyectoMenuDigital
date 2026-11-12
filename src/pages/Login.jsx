@@ -39,10 +39,6 @@ export default function Login() {
           <button type="submit" className="boton-autenticacion">
             Entrar
           </button>
-
-          <Link to="/registro" className="boton-secundario-autenticacion">
-            ¿No tienes cuenta? Registrarme
-          </Link>
         </form>
 
         
