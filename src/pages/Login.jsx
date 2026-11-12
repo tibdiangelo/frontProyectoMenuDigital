@@ -42,7 +42,7 @@ const handleSubmit = async (e) => {
   } catch (error) {
     const texto =
       error instanceof TypeError
-        ? 'Error en el servidor. No se pudo iniciar sesión.'
+        ? 'No se pudo iniciar sesión.'
         : error.message
     setMensaje({ tipo: 'error', texto })
   } finally {
