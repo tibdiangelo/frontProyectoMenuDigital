@@ -4,8 +4,8 @@ import logoImg from '../assets/pizzaloggo.jpeg'
 import pizzaImg from '../assets/pizzaimg.jpg'
 import sodasImg from '../assets/sodas.webp'
 import carritoImg from '../assets/carrito.jpeg'
-import facebook from '../assets/facebook.webp'
-import ig from '../assets/ig.webp'
+import facebook from '../assets/facebook.png'
+import ig from '../assets/ig.png'
 import { useCarrito } from '../context/CarritoContext'
 import { obtenerMenu } from '../services/api'
 import formatoMoneda from '../utils/formatoMoneda'
@@ -167,7 +167,7 @@ export default function Inicio() {
           rel="noopener noreferrer"
           aria-label="Facebook">
          <img
-           src="/src/assets/facebook.webp"
+           src="/src/assets/facebook.png"
             alt="Logo de Facebook"
            className="facebook"/> </a> 
            
@@ -176,7 +176,7 @@ export default function Inicio() {
           rel="noopener noreferrer"
           aria-label="ig">
          <img
-           src="/src/assets/ig.webp"
+           src="/src/assets/ig.png"
             alt="Logo de ig"
            className="ig"/> </a> 
            </p>
