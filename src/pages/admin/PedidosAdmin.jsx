@@ -154,8 +154,7 @@ export default function PedidosAdmin() {
           <p className="admin-antetitulo">Cocina</p>
           <h1 className="admin-titulo">Pedidos activos</h1>
           <p className="admin-descripcion">
-            Los pedidos más antiguos aparecen primero. La lista se actualiza
-            automáticamente cada 30 segundos.
+            
           </p>
         </div>
 
