@@ -53,12 +53,12 @@ export default function Login() {
         </header>
 
         <form className="formulario-autenticacion" onSubmit={handleSubmit}>
-          <label htmlFor="username">Usuario o correo</label>
+          <label htmlFor="username">Correo</label>
           <input
             type="text"
             id="username"
             name="username"
-            placeholder="Ingresa tu usuario o correo"
+            placeholder="Ingresa tu correo"
             autoComplete="username"
             value={formData.username}
             onChange={handleChange}

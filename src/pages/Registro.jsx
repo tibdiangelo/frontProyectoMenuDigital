@@ -98,7 +98,7 @@ export default function Registro() {
             type="email"
             id="email"
             name="email"
-            placeholder="chef@pizzeria.com"
+            placeholder="Ingrese su correo"
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
@@ -111,7 +111,7 @@ export default function Registro() {
             type="password"
             id="password"
             name="password"
-            placeholder="Mínimo 8 caracteres"
+            placeholder="Asigne su contraseña"
             autoComplete="new-password"
             value={formData.password}
             onChange={handleChange}
