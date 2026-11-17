@@ -1,28 +1,68 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import logoImg from '../assets/pizzaloggo.jpeg'
 import pizzaImg from '../assets/pizzaimg.jpg'
 import sodasImg from '../assets/sodas.webp'
 import carritoImg from '../assets/carrito.jpeg'
 import { useCarrito } from '../context/CarritoContext'
+import { obtenerMenu } from '../services/api'
 import formatoMoneda from '../utils/formatoMoneda'
 import './Inicio.css'
 
-const pizzas = [
-  { id: '1', nombre: 'Hawaiana', precio: 35000, categoria: 'Pizzas' },
-  { id: '2', nombre: 'Peperoni', precio: 35000, categoria: 'Pizzas' },
-  { id: '3', nombre: 'Jamón y queso', precio: 35000, categoria: 'Pizzas' },
-  { id: '4', nombre: 'Napolitana', precio: 35000, categoria: 'Pizzas' },
-]
+const IMAGENES_CATEGORIA = {
+  pizzas: pizzaImg,
+  sodas: sodasImg,
+}
 
-const sodas = [
-  { id: '5', nombre: 'Soda de Maracuyá', precio: 9000, categoria: 'Sodas' },
-  { id: '6', nombre: 'Soda de Frutos Rojos', precio: 9000, categoria: 'Sodas' },
-  { id: '7', nombre: 'Soda de Mango', precio: 9000, categoria: 'Sodas' },
-]
+function imagenCategoria(nombre) {
+  const clave = String(nombre ?? '').trim().toLowerCase()
+
+  return IMAGENES_CATEGORIA[clave] ?? pizzaImg
+}
 
 export default function Inicio() {
   const navigate = useNavigate()
   const { agregarPlato, cantidadTotal } = useCarrito()
+
+  const [menu, setMenu] = useState({ categorias: [], platos: [] })
+  const [cargando, setCargando] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let vigente = true
+
+    async function cargarMenu() {
+      setCargando(true)
+      setError('')
+
+      try {
+        const datos = await obtenerMenu()
+
+        if (vigente) {
+          setMenu(datos)
+        }
+      } catch (errorCarga) {
+        if (vigente) {
+          setError(
+            errorCarga.message ||
+              'No se pudo cargar el menú. Inténtalo de nuevo.',
+          )
+        }
+      } finally {
+        if (vigente) {
+          setCargando(false)
+        }
+      }
+    }
+
+    cargarMenu()
+
+    return () => {
+      vigente = false
+    }
+  }, [])
+
+  const platosDisponibles = menu.platos.filter((plato) => plato.disponible)
 
   return (
     <div className="pagina-inicio">
@@ -35,71 +75,67 @@ export default function Inicio() {
         </header>
 
         <section className="categorias-inicio" aria-label="Categorías del menú">
-          <article className="tarjeta-inicio">
-            <div className="cabecera-tarjeta">
-              <h2 className="titulo-tarjeta">Pizzas</h2>
-              <span className="insignia-tarjeta">4 opciones</span>
-            </div>
-            <img
-              src={pizzaImg}
-              alt="Pizzas"
-              className="imagen-tarjeta"
-              loading="lazy"
-            />
-            <ul className="lista-inicio">
-              {pizzas.map((plato) => (
-                <li key={plato.id} className="elemento-lista">
-                  <div className="datos-plato">
-                    <span className="nombre-plato">{plato.nombre}</span>
-                    <span className="precio-plato">
-                      {formatoMoneda.format(plato.precio)}
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    className="boton-agregar"
-                    onClick={() => agregarPlato(plato)}
-                    aria-label={`Agregar ${plato.nombre} al pedido`}
-                  >
-                    + Agregar
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </article>
+          {cargando ? (
+            <p className="subtitulo-inicio" role="status">
+              Cargando menú…
+            </p>
+          ) : error ? (
+            <p className="subtitulo-inicio" role="alert">
+              {error}
+            </p>
+          ) : menu.categorias.length === 0 ? (
+            <p className="subtitulo-inicio">
+              El menú todavía no tiene categorías disponibles.
+            </p>
+          ) : (
+            menu.categorias.map((categoria) => {
+              const platosCategoria = platosDisponibles.filter(
+                (plato) => plato.categoria === categoria.nombre,
+              )
 
-          <article className="tarjeta-inicio">
-            <div className="cabecera-tarjeta">
-              <h2 className="titulo-tarjeta">Sodas</h2>
-              <span className="insignia-tarjeta">3 opciones</span>
-            </div>
-            <img
-              src={sodasImg}
-              alt="Sodas"
-              className="imagen-tarjeta"
-              loading="lazy"
-            />
-            <ul className="lista-inicio">
-              {sodas.map((plato) => (
-                <li key={plato.id} className="elemento-lista">
-                  <div className="datos-plato">
-                    <span className="nombre-plato">{plato.nombre}</span>
-                    <span className="precio-plato">
-                      {formatoMoneda.format(plato.precio)}
+              return (
+                <article key={categoria.id} className="tarjeta-inicio">
+                  <div className="cabecera-tarjeta">
+                    <h2 className="titulo-tarjeta">{categoria.nombre}</h2>
+                    <span className="insignia-tarjeta">
+                      {platosCategoria.length}{' '}
+                      {platosCategoria.length === 1 ? 'opción' : 'opciones'}
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    className="boton-agregar"
-                    onClick={() => agregarPlato(plato)}
-                    aria-label={`Agregar ${plato.nombre} al pedido`}
-                  >
-                    + Agregar
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </article>
+                  <img
+                    src={imagenCategoria(categoria.nombre)}
+                    alt={categoria.nombre}
+                    className="imagen-tarjeta"
+                    loading="lazy"
+                  />
+                  {platosCategoria.length === 0 ? (
+                    <p className="subtitulo-inicio">Sin platos disponibles.</p>
+                  ) : (
+                    <ul className="lista-inicio">
+                      {platosCategoria.map((plato) => (
+                        <li key={plato.id} className="elemento-lista">
+                          <div className="datos-plato">
+                            <span className="nombre-plato">{plato.nombre}</span>
+                            <span className="precio-plato">
+                              {formatoMoneda.format(plato.precio)}
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            className="boton-agregar"
+                            onClick={() => agregarPlato(plato)}
+                            aria-label={`Agregar ${plato.nombre} al pedido`}
+                          >
+                            + Agregar
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              )
+            })
+          )}
         </section>
 
         <button
