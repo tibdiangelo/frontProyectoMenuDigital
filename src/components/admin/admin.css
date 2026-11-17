@@ -5,8 +5,6 @@
   background: #fff7f0;
 }
 
-/* ---------- Barra superior ---------- */
-
 .admin-barra {
   position: sticky;
   top: 0;
@@ -98,7 +96,6 @@
   width: 100%;
 }
 
-/* ---------- Estructura de páginas ---------- */
 
 .admin-pagina {
   display: flex;
@@ -178,7 +175,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* ---------- Botones ---------- */
 
 .admin-boton {
   display: inline-flex;
@@ -243,8 +239,6 @@
   font-size: 0.8rem;
 }
 
-/* ---------- Avisos ---------- */
-
 .admin-aviso {
   margin: 0;
   padding: 0.8rem 1rem;
@@ -265,8 +259,6 @@
   background: #fef2f2;
   border: 1px solid #fecaca;
 }
-
-/* ---------- Filtros ---------- */
 
 .admin-filtros {
   display: flex;
@@ -342,8 +334,6 @@
   font-weight: 600;
   color: #6b7280;
 }
-
-/* ---------- Tabla de platos ---------- */
 
 .admin-tabla-contenedor {
   width: 100%;
@@ -431,7 +421,6 @@
   gap: 0.4rem;
 }
 
-/* ---------- Insignias ---------- */
 
 .admin-insignia {
   display: inline-flex;
@@ -488,7 +477,6 @@
   background: #f3f4f6;
 }
 
-/* ---------- Estados de carga / error / vacío ---------- */
 
 .admin-estado {
   display: flex;
@@ -542,7 +530,6 @@
   }
 }
 
-/* ---------- Formulario ---------- */
 
 .admin-formulario {
   display: flex;
@@ -666,8 +653,6 @@
   padding-top: 0.5rem;
   border-top: 1px solid #f1e7e0;
 }
-
-/* ---------- Pedidos ---------- */
 
 .admin-lista-pedidos {
   display: grid;
@@ -804,8 +789,6 @@
   color: #b91c1c;
 }
 
-/* ---------- Detalle del pedido ---------- */
-
 .admin-detalle {
   display: flex;
   flex-direction: column;
@@ -897,8 +880,6 @@
   border-radius: 999px;
 }
 
-/* ---------- Modal ---------- */
-
 .admin-modal-fondo {
   position: fixed;
   inset: 0;
@@ -947,7 +928,6 @@
   margin-top: 1.25rem;
 }
 
-/* ---------- Accesibilidad ---------- */
 
 .admin-boton:focus-visible,
 .admin-cerrar-sesion:focus-visible,
@@ -962,7 +942,6 @@
   outline-offset: 2px;
 }
 
-/* ---------- Escritorio ---------- */
 
 @media (min-width: 720px) {
   .admin-pagina {

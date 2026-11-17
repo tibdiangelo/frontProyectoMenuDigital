@@ -1,4 +1,4 @@
-import { NavLink, Navigate, Outlet, useNavigate } from 'react-router'
+import { Link, NavLink, Navigate, Outlet, useNavigate } from 'react-router'
 import logoImg from '../../assets/pizzaloggo.jpeg'
 import { useAuth } from '../../context/AuthContext'
 import AuthProvider from '../../context/AuthProvider'
@@ -8,10 +8,10 @@ const claseEnlace = ({ isActive }) =>
   isActive ? 'admin-enlace admin-enlace-activo' : 'admin-enlace'
 
 function PanelAdmin() {
-  const { token, cerrarSesion } = useAuth()
+  const { token, usuario, esAdmin, cerrarSesion } = useAuth()
   const navigate = useNavigate()
 
-  if (!token) {
+  if (!token || !usuario) {
     return <Navigate to="/login" replace />
   }
 
@@ -36,13 +36,24 @@ function PanelAdmin() {
         </div>
 
         <nav className="admin-navegacion" aria-label="Secciones de administración">
-          <NavLink to="/admin/platos" className={claseEnlace}>
-            Platos
-          </NavLink>
+          {esAdmin ? (
+            <NavLink to="/admin/platos" className={claseEnlace}>
+              Platos
+            </NavLink>
+          ) : null}
           <NavLink to="/admin/pedidos" className={claseEnlace}>
             Pedidos
           </NavLink>
         </nav>
+
+        {esAdmin ? (
+          <Link
+            to="/registro"
+            className="admin-boton admin-boton-secundario admin-boton-pequeno"
+          >
+            Agregar nuevo chef
+          </Link>
+        ) : null}
 
         {token ? (
           <button
