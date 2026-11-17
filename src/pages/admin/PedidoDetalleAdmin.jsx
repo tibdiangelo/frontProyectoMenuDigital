@@ -234,7 +234,7 @@ export default function PedidoDetalleAdmin() {
               <h2 className="admin-detalle-titulo">Siguiente paso</h2>
               <p className="admin-descripcion">
                 {siguienteEstado
-                  ? `El pedido está en "${pedido.estado}". Solo puedes avanzar al estado "${siguienteEstado}".`
+                  ? `El pedido está en "${pedido.estado}".`
                   : 'El pedido ya fue entregado y salió de la lista de pedidos activos.'}
               </p>
             </div>
