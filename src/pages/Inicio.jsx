@@ -166,19 +166,15 @@ export default function Inicio() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook">
-         <img
-           src="/src/assets/facebook.png"
-            alt="Logo de Facebook"
-           className="facebook"/> </a> 
+         <img src={facebook} alt="Logo de Facebook" 
+         className="facebook" /></a>
            
            <a href="https://www.instagram.com/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="ig">
-         <img
-           src="/src/assets/ig.png"
-            alt="Logo de ig"
-           className="ig"/> </a> 
+         <img src={ig} alt="Logo de ig" 
+         className="ig" /></a> 
            </p>
         </footer>
       </div>
