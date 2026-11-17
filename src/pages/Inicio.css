@@ -242,8 +242,29 @@
 }
 
 .enlaces-pie {
-  font-weight: 600;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 12px; 
+}
+
+.enlaces-pie a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.enlaces-pie a:hover {
+  transform: scale(1.1); 
+  opacity: 0.85;
+}
+
+.enlaces-pie img {
+  width: 24px; 
+  height: 24px;
+  object-fit: contain;
+  display: block;
 }
 
 

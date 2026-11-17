@@ -4,6 +4,8 @@ import logoImg from '../assets/pizzaloggo.jpeg'
 import pizzaImg from '../assets/pizzaimg.jpg'
 import sodasImg from '../assets/sodas.webp'
 import carritoImg from '../assets/carrito.jpeg'
+import facebook from '../assets/facebook.webp'
+import ig from '../assets/ig.webp'
 import { useCarrito } from '../context/CarritoContext'
 import { obtenerMenu } from '../services/api'
 import formatoMoneda from '../utils/formatoMoneda'
@@ -158,8 +160,26 @@ export default function Inicio() {
         </button>
 
         <footer className="pie-inicio">
-          <p>Redes Sociales</p>
-          <p className="enlaces-pie">Facebook · Instagram</p>
+          <p>Siguenos en Redes Sociales</p>
+          <p className="enlaces-pie"> 
+          <a href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook">
+         <img
+           src="/src/assets/facebook.webp"
+            alt="Logo de Facebook"
+           className="facebook"/> </a> 
+           
+           <a href="https://www.instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="ig">
+         <img
+           src="/src/assets/ig.webp"
+            alt="Logo de ig"
+           className="ig"/> </a> 
+           </p>
         </footer>
       </div>
     </div>
