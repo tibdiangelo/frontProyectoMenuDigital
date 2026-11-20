@@ -81,7 +81,7 @@ function normalizarPlato(datos, categoriasPorId) {
   return {
     id: String(datos.id ?? ''),
     nombre: datos.nombre ?? '',
-    descripcion: datos['descripción'] ?? datos.descripcion ?? '',
+    descripcion: String(datos['descripción'] ?? datos.descripcion ?? '').trim(),
     precio: Number(datos.precio) || 0,
     imagen: datos.imagen ?? '',
     disponible: datos.disponible !== false,

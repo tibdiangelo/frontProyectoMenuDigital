@@ -140,7 +140,7 @@ export default function FormularioPlato({
             onChange={handleChange}
             placeholder="Ingredientes o descripción breve del plato"
             rows="3"
-            maxLength={300}
+            maxLength={200}
           />
         </div>
 

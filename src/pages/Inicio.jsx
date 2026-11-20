@@ -118,6 +118,11 @@ export default function Inicio() {
                         <li key={plato.id} className="elemento-lista">
                           <div className="datos-plato">
                             <span className="nombre-plato">{plato.nombre}</span>
+                            {plato.descripcion ? (
+                              <span className="descripcion-plato">
+                                {plato.descripcion}
+                              </span>
+                            ) : null}
                             <span className="precio-plato">
                               {formatoMoneda.format(plato.precio)}
                             </span>
