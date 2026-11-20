@@ -73,7 +73,7 @@ export default function Inicio() {
           <img src={logoImg} alt="Logo Menú Digital" className="logo-inicio" />
           <p className="antetitulo-inicio">Menú Digital</p>
           <h1 className="titulo-inicio">Pizzería Squisita</h1>
-          <p className="subtitulo-inicio">Elige tus favoritos y arma tu pedido.</p>
+          <p className="subtitulo-inicio">Elige tus favoritos y arma tu pedido</p>
         </header>
 
         <section className="categorias-inicio" aria-label="Categorías del menú">
