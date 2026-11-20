@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router'
 import Display from '../components/Display'
 import AdminLayout from '../components/admin/AdminLayout'
 import RutaSoloAdmin from '../components/admin/RutaSoloAdmin'
+import CambiarPassword from '../pages/CambiarPassword'
 import Inicio from '../pages/Inicio'
 import Login from '../pages/Login'
 import Registro from '../pages/Registro'
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       { path: '*', element: <ErrorPage /> },
       { path: 'pedido', element: <Pedido /> },
     ],
+  },
+  {
+    path: '/cambiar-password',
+    element: <CambiarPassword />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/admin',

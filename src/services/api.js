@@ -132,6 +132,7 @@ export async function iniciarSesionApi({ username, password }) {
       nombre: usuario.nombre ?? '',
       email: usuario.email ?? '',
       rol: usuario.rol === 'chef' ? 'chef' : 'admin',
+      debeCambiarPassword: Boolean(usuario.debe_cambiar_password),
     },
   }
 }

@@ -90,6 +90,37 @@ export async function peticionAdmin(
   return datos
 }
 
+export async function cambiarPasswordApi({
+  passwordActual,
+  passwordNueva,
+}) {
+  const datos = await peticionAdmin('/api/usuarios/cambiar-password', {
+    metodo: 'PUT',
+    cuerpo: {
+      password_actual: passwordActual,
+      password_nueva: passwordNueva,
+    },
+  })
+
+  const usuario = datos?.usuario ?? datos?.data?.usuario
+  const token = datos?.token
+
+  if (!token || !usuario) {
+    throw new Error('El servidor no devolvió la sesión actualizada.')
+  }
+
+  return {
+    token: String(token),
+    usuario: {
+      id: usuario.id,
+      nombre: usuario.nombre ?? '',
+      email: usuario.email ?? '',
+      rol: usuario.rol === 'chef' ? 'chef' : 'admin',
+      debeCambiarPassword: Boolean(usuario.debe_cambiar_password),
+    },
+  }
+}
+
 export function extraerLista(datos, claves = []) {
   if (Array.isArray(datos)) return datos
 

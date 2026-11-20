@@ -15,6 +15,10 @@ function PanelAdmin() {
     return <Navigate to="/login" replace />
   }
 
+  if (usuario.debeCambiarPassword) {
+    return <Navigate to="/cambiar-password" replace />
+  }
+
   function handleCerrarSesion() {
     cerrarSesion()
     navigate('/login', { replace: true })

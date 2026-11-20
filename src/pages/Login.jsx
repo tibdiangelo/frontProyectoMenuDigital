@@ -28,6 +28,12 @@ export default function Login() {
 
       window.localStorage.setItem(CLAVE_TOKEN, token)
       window.localStorage.setItem(CLAVE_USUARIO, JSON.stringify(usuario))
+
+      if (usuario.debeCambiarPassword) {
+        navigate('/cambiar-password', { replace: true })
+        return
+      }
+
       setMensaje({ tipo: 'success', texto: 'Sesión iniciada correctamente' })
       navigate(
         usuario.rol === 'chef' ? '/admin/pedidos' : '/admin/platos',

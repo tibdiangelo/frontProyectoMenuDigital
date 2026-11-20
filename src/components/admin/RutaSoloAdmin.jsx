@@ -24,6 +24,10 @@ export default function RutaSoloAdmin({ children }) {
     return <Navigate to="/login" replace />
   }
 
+  if (usuario.debeCambiarPassword) {
+    return <Navigate to="/cambiar-password" replace />
+  }
+
   if (usuario.rol !== 'admin') {
     return <Navigate to="/admin/pedidos" replace />
   }
