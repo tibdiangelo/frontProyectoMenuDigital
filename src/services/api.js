@@ -137,20 +137,18 @@ export async function iniciarSesionApi({ username, password }) {
 }
 
 export async function crearPedidoApi({ mesa, clienteNombre, notas, items }) {
-  const total = items.reduce(
-    (suma, item) => suma + Number(item.precio) * Number(item.cantidad),
-    0,
-  )
-
-  const datos = await peticionPublica('/api/pedidos', {
+  const datos = await peticionPublica('/api/pedidos/completo', {
     metodo: 'POST',
     cuerpo: {
       mesa_id: Number(mesa),
       usuario_id: null,
-      total,
       estado: 'Pendiente',
       cliente_nombre: clienteNombre,
       notas,
+      detalles: items.map((item) => ({
+        plato_id: Number(item.id),
+        cantidad: Number(item.cantidad),
+      })),
     },
   })
 
@@ -158,42 +156,6 @@ export async function crearPedidoApi({ mesa, clienteNombre, notas, items }) {
 
   if (!pedido || pedido.id === undefined || pedido.id === null) {
     throw new Error('El servidor no devolvió el pedido creado.')
-  }
-
-  const detallesCreados = []
-
-  try {
-    for (const item of items) {
-      const detalle = await peticionPublica('/api/detalles', {
-        metodo: 'POST',
-        cuerpo: {
-          pedido_id: pedido.id,
-          plato_id: Number(item.id),
-          cantidad: Number(item.cantidad),
-          precio_unitario: Number(item.precio),
-        },
-      })
-
-      const idDetalle = detalle?.detalle?.id ?? detalle?.id ?? null
-
-      if (idDetalle !== null) {
-        detallesCreados.push(idDetalle)
-      }
-    }
-  } catch (error) {
-    await Promise.allSettled(
-      detallesCreados.map((id) =>
-        peticionPublica(`/api/detalles/${encodeURIComponent(id)}`, {
-          metodo: 'DELETE',
-        }),
-      ),
-    )
-
-    await peticionPublica(`/api/pedidos/${encodeURIComponent(pedido.id)}`, {
-      metodo: 'DELETE',
-    }).catch(() => {})
-
-    throw error
   }
 
   return {
