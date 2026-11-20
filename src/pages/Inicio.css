@@ -161,9 +161,9 @@
 }
 
 .precio-plato {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #6b7280;
+  color: rgb(217, 70, 12);
 }
 
 .boton-agregar {
